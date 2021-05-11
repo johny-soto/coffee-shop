@@ -1,0 +1,1 @@
+insert into coffee (name, category_id, price, units) values (:name, :categoryId, :price, :units)
