@@ -50,9 +50,12 @@ pipeline {
       steps{
         echo "------------>Compile & Tests<------------"
         sh 'ls -a'
-        sh 'chmod +x gradle'
-        sh './coffee-shop-api/gradle/wrapper/gradle-wrapper --b ./coffee-shop-api/domain/build.gradle test'
-        sh './coffee-shop-api/gradle/wrapper/gradle-wrapper --b ./coffee-shop-api/infrastructure/build.gradle test'
+        sh 'wget https://services.gradle.org/distributions/gradle-7.0.1-all.zip'
+        sh 'unzip gradle-7.0.1-bin.zip'
+        sh 'ls -a'
+        sh 'chmod +x ./gradle-7.0.1/bin/gradle'
+        sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/domain/build.gradle test'
+        sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/infrastructure/build.gradle test'
       }
     }
 
@@ -69,7 +72,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
         //Construir sin tarea test que se ejecutó previamente
-        sh './coffee-shop-api/gradle/wrapper/gradle-wrapper --b ./coffee-shop-api/build.gradle build -x test'
+        sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/build.gradle build -x test'
       }
     }  
   }
