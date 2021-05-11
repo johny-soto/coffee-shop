@@ -49,9 +49,10 @@ pipeline {
     stage('Compile & Tests') {
       steps{
         echo "------------>Compile & Tests<------------"
-        sh 'chmod +x gradle'
-        sh 'gradle --b ./coffee-shop-api/domain/build.gradle test'
-        sh 'gradle --b ./coffee-shop-api/infrastructure/build.gradle test'
+        sh 'chmod +x gradlew'
+        sh 'ls -a'
+        sh 'gradlew --b ./coffee-shop-api/domain/build.gradle test'
+        sh 'gradlew --b ./coffee-shop-api/infrastructure/build.gradle test'
       }
     }
 
@@ -68,7 +69,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
         //Construir sin tarea test que se ejecutó previamente
-        sh 'gradle --b ./coffee-shop-api/build.gradle build -x test'
+        sh 'gradlew --b ./coffee-shop-api/build.gradle build -x test'
       }
     }  
   }
