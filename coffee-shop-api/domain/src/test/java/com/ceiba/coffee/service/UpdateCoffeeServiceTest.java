@@ -4,6 +4,7 @@ import com.ceiba.coffee.exception.CoffeeNotFoundException;
 import com.ceiba.coffee.model.entity.Coffee;
 import com.ceiba.coffee.port.repository.CoffeeRepository;
 import com.ceiba.coffee.service.testdatabuilder.CoffeeTestDataBuilder;
+import com.ceiba.domain.exception.NoDataException;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -19,6 +20,6 @@ public class UpdateCoffeeServiceTest {
         Mockito.when(coffeeRepository.exist(Mockito.anyInt())).thenReturn(false);
         UpdateCoffeeService updateCoffeeService = new UpdateCoffeeService(coffeeRepository);
         // act - assert
-        BaseTest.assertThrows(() -> updateCoffeeService.execute(coffee), CoffeeNotFoundException.class,"Café no encontrado");
+        BaseTest.assertThrows(() -> updateCoffeeService.execute(coffee), NoDataException.class,"Café no encontrado");
     }
 }

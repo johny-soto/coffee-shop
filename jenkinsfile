@@ -46,11 +46,12 @@ pipeline {
       }
     }
     
-    stage('Compile & Unit Tests') {
+    stage('Compile & Tests') {
       steps{
-        echo "------------>Compile & Unit Tests<------------"
+        echo "------------>Compile & Tests<------------"
         sh 'chmod +x gradlew'
-        sh './gradlew --b ./build.gradle test'
+        sh './gradlew --b ./coffee-shop-api/domain/build.gradle test'
+        sh './gradlew --b ./coffee-shop-api/infrastructure/build.gradle test'
       }
     }
 
@@ -67,7 +68,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
         //Construir sin tarea test que se ejecutó previamente
-        sh 'gradle --b ./build.gradle build -x test'
+        sh 'gradle --b ./coffee-shop-api/build.gradle build -x test'
       }
     }  
   }

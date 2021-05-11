@@ -14,11 +14,11 @@ dependencies {
 
 	testImplementation project.ext.h2
 	testImplementation project.ext.springboottest
-	compile project.ext.springbootweb
-	compile project.ext.swagger
+	implementation project.ext.springbootweb
+	implementation project.ext.swagger
 
-	compile project.ext.apachecommons
-	compile project.ext.springbootjdbc
+	implementation project.ext.apachecommons
+	implementation project.ext.springbootjdbc
 	runtimeOnly project.ext.db
 	testImplementation project.ext.flywaytest
 
@@ -36,8 +36,8 @@ jacocoTestReport {
 		xml.enabled true
 		html.enabled true
 	}
-	additionalSourceDirs files("../aplicacion/src/main/java")
-	additionalClassDirs files("../aplicacion/build/classes/java/main")
+	additionalSourceDirs files("../application/src/main/java")
+	additionalClassDirs files("../application/build/classes/java/main")
 }
 
 test {
