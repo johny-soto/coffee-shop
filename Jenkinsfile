@@ -49,7 +49,7 @@ pipeline {
     stage('Compile & Tests') {
       steps{
         echo "------------>Compile & Tests<------------"
-        sh 'chmod +x gradlew'
+        sh 'chmod +x ./coffee-shop-api/gradle/wrapper/gradle-wrapper'
         sh 'ls -a'
         sh './coffee-shop-api/gradle/wrapper/gradle-wrapper --b ./coffee-shop-api/domain/build.gradle test'
         sh './coffee-shop-api/gradle/wrapper/gradle-wrapper --b ./coffee-shop-api/infrastructure/build.gradle test'
