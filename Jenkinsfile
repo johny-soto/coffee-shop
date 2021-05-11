@@ -50,8 +50,8 @@ pipeline {
       steps{
         echo "------------>Compile & Tests<------------"
         sh 'chmod +x gradle'
-        sh './gradle --b ./coffee-shop-api/domain/build.gradle test'
-        sh './gradle --b ./coffee-shop-api/infrastructure/build.gradle test'
+        sh 'gradle --b ./coffee-shop-api/domain/build.gradle test'
+        sh 'gradle --b ./coffee-shop-api/infrastructure/build.gradle test'
       }
     }
 
