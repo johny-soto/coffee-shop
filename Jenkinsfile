@@ -50,8 +50,8 @@ pipeline {
       steps{
         echo "------------>Compile & Tests<------------"
         sh 'ls -a'
-        sh 'wget https://services.gradle.org/distributions/gradle-7.0.1-all.zip -nc'
-        sh 'unzip gradle-7.0.1-all.zip -u'
+        sh 'wget -nc https://services.gradle.org/distributions/gradle-7.0.1-all.zip'
+        sh 'unzip -u gradle-7.0.1-all.zip'
         sh 'ls -a'
         sh 'chmod +x ./gradle-7.0.1/bin/gradle'
         sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/domain/build.gradle test'
