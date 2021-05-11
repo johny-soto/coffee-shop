@@ -49,9 +49,9 @@ pipeline {
     stage('Compile & Tests') {
       steps{
         echo "------------>Compile & Tests<------------"
-        sh 'chmod +x gradlew'
-        sh './gradlew --b ./coffee-shop-api/domain/build.gradle test'
-        sh './gradlew --b ./coffee-shop-api/infrastructure/build.gradle test'
+        sh 'chmod +x gradle'
+        sh './gradle --b ./coffee-shop-api/domain/build.gradle test'
+        sh './gradle --b ./coffee-shop-api/infrastructure/build.gradle test'
       }
     }
 
