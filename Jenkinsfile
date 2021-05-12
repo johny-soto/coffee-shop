@@ -15,69 +15,7 @@ pipeline {
     jdk 'JDK11_Centos' //Verisión preinstalada en la Configuración del Master
     gradle 'Gradle5.0_Centos' //Preinstalada en la Configuración del Master
   }
-/*	Versiones disponibles
-      JDK8_Mac
-      JDK6_Centos
-      JDK7_Centos
-      JDK8_Centos
-      JDK10_Centos
-      JDK11_Centos
-      JDK13_Centos
-      JDK14_Centos
-*/
 
-  //Aquí comienzan los “items” del Pipeline
-  // stages{
-  //   stage('Checkout') {
-  //     steps{
-  //       echo "------------>Checkout<------------"
-  //       checkout([
-  //           $class: 'GitSCM', 
-  //           branches: [[name: '*/master']], 
-  //           doGenerateSubmoduleConfigurations: false, 
-  //           extensions: [], 
-  //           gitTool: 'Default', 
-  //           submoduleCfg: [], 
-  //           userRemoteConfigs: [[
-  //           credentialsId: 'GitHub_johny-soto', 
-  //               url:'https://github.com/johny-soto/coffee-shop'
-  //           ]]
-  //       ])
-
-  //     }
-  //   }
-    
-  //   stage('Compile & Tests') {
-  //     steps{
-  //       echo "------------>Compile & Tests<------------"
-  //       sh 'ls -a'
-  //       sh 'wget -nc https://services.gradle.org/distributions/gradle-7.0.1-all.zip'
-  //       sh 'unzip -u gradle-7.0.1-all.zip'
-  //       sh 'ls -a'
-  //       sh 'chmod +x ./gradle-7.0.1/bin/gradle'
-  //       sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/domain/build.gradle test'
-  //       sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/infrastructure/build.gradle test'
-  //     }
-  //   }
-
-  //   stage('Static Code Analysis') {
-  //     steps{
-  //       echo '------------>Análisis de código estático<------------'
-  //       withSonarQubeEnv('Sonar') {
-  //       sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
-  //       }
-  //     }
-  //   }
-
-  //   stage('Build') {
-  //     steps {
-  //       echo "------------>Build<------------"
-  //       //Construir sin tarea test que se ejecutó previamente
-  //       sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/build.gradle clean'
-  //       sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/build.gradle build -x test'
-  //     }
-  //   }  
-  // }
   stages {
     stage('Checkout') {
       steps {
@@ -129,7 +67,7 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
-      junit 'build/test-results/test/*.xml'
+      junit 'coffee-shop-api/**/build/test-results/test/*.xml'
     }
     failure {
       echo 'This will run only if failed'
