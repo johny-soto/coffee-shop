@@ -26,6 +26,12 @@ public class ArgumentValidator {
             throw new LengthValueException(message);
         }
     }
+
+    public static <T> void validateNotEmpty(String value, String message) {
+        if (value.isEmpty()) {
+            throw new ValueRequiredException(message);
+        }
+    }
     
     public static <T> void validateNotEmpty(List<T> list, String message) {
         if (list.isEmpty()) {
@@ -34,6 +40,12 @@ public class ArgumentValidator {
     }
 
     public static void validatePositive(Double value, String message) {
+        if (value <= 0) {
+            throw new InvalidValueException(message);
+        }
+    }
+
+    public static void validatePositive(Integer value, String message) {
         if (value <= 0) {
             throw new InvalidValueException(message);
         }

@@ -27,6 +27,15 @@ public class CoffeeTestDataBuilder {
         this.id = id;
         return this;
     }
+    public CoffeeTestDataBuilder whitName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public CoffeeTestDataBuilder whitUnits(Integer units) {
+        this.units = units;
+        return this;
+    }
 
     public Coffee build() {
 
