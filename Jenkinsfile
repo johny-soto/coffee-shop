@@ -36,8 +36,10 @@ pipeline {
     }
     stage('Compile & Tests') {
       steps {
-        echo "------------>Unit Tests<------------"
         dir("coffee-shop-api") {
+          echo "------------>Clean Tests<------------"
+			    sh 'gradle clean'
+          echo "------------>Tests<------------"
           sh 'gradle test'
         }
       }
