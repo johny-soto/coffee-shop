@@ -13,7 +13,7 @@ public class CoffeeCommandTestDataBuilder {
     private Integer units;
 
     public CoffeeCommandTestDataBuilder() {
-        name = UUID.randomUUID().toString();
+        name = "Test";
         category = 1;
         price = 10;
         units = 1;
