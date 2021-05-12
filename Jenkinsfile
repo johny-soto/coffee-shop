@@ -13,6 +13,7 @@ pipeline {
   //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
     jdk 'JDK11_Centos' //Verisión preinstalada en la Configuración del Master
+    gradle 'Gradle6.0.1_Centos' //Preinstalada en la Configuración del Master
   }
 /*	Versiones disponibles
       JDK8_Mac
@@ -26,9 +27,60 @@ pipeline {
 */
 
   //Aquí comienzan los “items” del Pipeline
-  stages{
+  // stages{
+  //   stage('Checkout') {
+  //     steps{
+  //       echo "------------>Checkout<------------"
+  //       checkout([
+  //           $class: 'GitSCM', 
+  //           branches: [[name: '*/master']], 
+  //           doGenerateSubmoduleConfigurations: false, 
+  //           extensions: [], 
+  //           gitTool: 'Default', 
+  //           submoduleCfg: [], 
+  //           userRemoteConfigs: [[
+  //           credentialsId: 'GitHub_johny-soto', 
+  //               url:'https://github.com/johny-soto/coffee-shop'
+  //           ]]
+  //       ])
+
+  //     }
+  //   }
+    
+  //   stage('Compile & Tests') {
+  //     steps{
+  //       echo "------------>Compile & Tests<------------"
+  //       sh 'ls -a'
+  //       sh 'wget -nc https://services.gradle.org/distributions/gradle-7.0.1-all.zip'
+  //       sh 'unzip -u gradle-7.0.1-all.zip'
+  //       sh 'ls -a'
+  //       sh 'chmod +x ./gradle-7.0.1/bin/gradle'
+  //       sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/domain/build.gradle test'
+  //       sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/infrastructure/build.gradle test'
+  //     }
+  //   }
+
+  //   stage('Static Code Analysis') {
+  //     steps{
+  //       echo '------------>Análisis de código estático<------------'
+  //       withSonarQubeEnv('Sonar') {
+  //       sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+  //       }
+  //     }
+  //   }
+
+  //   stage('Build') {
+  //     steps {
+  //       echo "------------>Build<------------"
+  //       //Construir sin tarea test que se ejecutó previamente
+  //       sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/build.gradle clean'
+  //       sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/build.gradle build -x test'
+  //     }
+  //   }  
+  // }
+  stages {
     stage('Checkout') {
-      steps{
+      steps {
         echo "------------>Checkout<------------"
         checkout([
             $class: 'GitSCM', 
@@ -42,23 +94,16 @@ pipeline {
                 url:'https://github.com/johny-soto/coffee-shop'
             ]]
         ])
-
       }
     }
-    
     stage('Compile & Tests') {
-      steps{
-        echo "------------>Compile & Tests<------------"
-        sh 'ls -a'
-        sh 'wget -nc https://services.gradle.org/distributions/gradle-7.0.1-all.zip'
-        sh 'unzip -u gradle-7.0.1-all.zip'
-        sh 'ls -a'
-        sh 'chmod +x ./gradle-7.0.1/bin/gradle'
-        sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/domain/build.gradle test'
-        sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/infrastructure/build.gradle test'
+      steps {
+        echo "------------>Unit Tests<------------"
+        dir("coffee-shop-api") {
+          sh 'gradle test'
+        }
       }
     }
-
     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'
@@ -67,14 +112,15 @@ pipeline {
         }
       }
     }
-
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-        //Construir sin tarea test que se ejecutó previamente
-        sh './gradle-7.0.1/bin/gradle --b ./coffee-shop-api/build.gradle build -x test'
+        dir("coffee-shop-api") {
+          //Construir sin tarea test que se ejecutó previamente
+          sh 'gradle build -x test'
+        }
       }
-    }  
+    }
   }
 
   post {
