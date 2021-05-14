@@ -3,11 +3,10 @@ package com.ceiba.coffee.adaptador.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.coffee.model.dto.CoffeeDto;
 import org.springframework.jdbc.core.RowMapper;
 
-public class CoffeeMap implements RowMapper<CoffeeDto>, MapperResult {
+public class CoffeeMap implements RowMapper<CoffeeDto> {
 
     @Override
     public CoffeeDto mapRow(ResultSet resultSet, int rowNum) throws SQLException {

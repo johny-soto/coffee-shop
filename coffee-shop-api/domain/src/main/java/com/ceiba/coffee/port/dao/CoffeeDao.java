@@ -11,4 +11,10 @@ public interface CoffeeDao {
      * @return cafe
      */
     List<CoffeeDto> list();
+
+    /**
+     * Permite consultar lista de cafe por ids
+     * @return cafe
+     */
+    List<CoffeeDto> listByIds(List<Integer> ids);
 }

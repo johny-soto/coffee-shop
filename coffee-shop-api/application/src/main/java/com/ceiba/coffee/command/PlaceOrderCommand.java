@@ -9,10 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterCoffeeCommand {
-
-    private String name;
-    private int category;
-    private int units;
-    private int price;
+public class PlaceOrderCommand {
+    private Integer orderId;
 }

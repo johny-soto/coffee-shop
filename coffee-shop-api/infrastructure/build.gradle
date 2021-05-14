@@ -21,8 +21,10 @@ dependencies {
 	implementation project.ext.springbootjdbc
 	runtimeOnly project.ext.db
 	testImplementation project.ext.flywaytest
+	implementation group: 'org.json', name: 'json', version: '20210307'
 
-	
+
+
 	implementation project(':domain')
 	implementation project(':application')
 

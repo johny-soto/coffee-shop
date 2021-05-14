@@ -1,15 +1,15 @@
 package com.ceiba.coffee.model.valueobject;
 
 public class Money {
-    private final int amount;
+    private final double amount;
     private final Currency currency;
 
-    public Money(int amount, Currency currency) {
+    public Money(double amount, Currency currency) {
         this.amount = amount;
         this.currency = currency;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
@@ -17,7 +17,18 @@ public class Money {
         return currency;
     }
 
-    public static Money createUSD(int amount){
-        return new Money(amount, new Currency("USD"));
+    public static Money createUSD(double amount){
+        return new Money(amount, Currency.USD);
     }
+
+    public Money add(double amount) {
+        amount += this.amount;
+        return new Money(amount, this.currency);
+    }
+
+    public Money subtract(double amount) {
+        amount = this.amount - amount;
+        return new Money(amount, this.currency);
+    }
+
 }

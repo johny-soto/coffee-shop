@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CoffeeRepositoryMysql implements CoffeeRepository {
+public class MysqlCoffeeRepository implements CoffeeRepository {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
@@ -26,7 +26,7 @@ public class CoffeeRepositoryMysql implements CoffeeRepository {
     private static String existSql;
 
 
-    public CoffeeRepositoryMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+    public MysqlCoffeeRepository(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 

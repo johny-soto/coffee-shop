@@ -30,6 +30,10 @@ public class Coffee {
         setUnits(units);
     }
 
+    public Coffee(int id) {
+        this.id = id;
+    }
+
     private void setUnits(int units) {
         ArgumentValidator.validatePositive(units, "Las unidades deben ser mayor a 0");
         this.units = units;

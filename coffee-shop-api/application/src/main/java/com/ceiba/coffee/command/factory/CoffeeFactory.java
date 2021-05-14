@@ -1,6 +1,7 @@
 package com.ceiba.coffee.command.factory;
 
 import com.ceiba.coffee.command.UpdateCoffeeCommand;
+import com.ceiba.coffee.model.dto.CoffeeDto;
 import com.ceiba.coffee.model.entity.Coffee;
 import com.ceiba.coffee.model.entity.CoffeeCategory;
 import com.ceiba.coffee.model.valueobject.Money;
@@ -15,7 +16,7 @@ public class CoffeeFactory {
         return new Coffee(
                 registerCoffeeCommand.getName(),
                 CoffeeCategory.fromId(registerCoffeeCommand.getCategory()),
-                Money.createUSD(registerCoffeeCommand.getValue()),
+                Money.createUSD(registerCoffeeCommand.getPrice()),
                 registerCoffeeCommand.getUnits()
         );
     }
@@ -27,6 +28,16 @@ public class CoffeeFactory {
                 CoffeeCategory.fromId(updateCoffeeCommand.getCategory()),
                 Money.createUSD(updateCoffeeCommand.getValue()),
                 updateCoffeeCommand.getUnits()
+        );
+    }
+
+    public Coffee create(CoffeeDto coffeeDto) {
+        return new Coffee(
+                coffeeDto.getId(),
+                coffeeDto.getName(),
+                CoffeeCategory.fromId(coffeeDto.getCategoryId()),
+                Money.createUSD(coffeeDto.getPrice()),
+                coffeeDto.getUnits()
         );
     }
 }

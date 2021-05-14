@@ -21,7 +21,7 @@ public class CoffeeDto {
                 coffee.getId(),
                 coffee.getName(),
                 coffee.getCategory().getId(),
-                coffee.getPrice().getAmount(),
+                (int)coffee.getPrice().getAmount(),
                 coffee.getUnits());
     }
 

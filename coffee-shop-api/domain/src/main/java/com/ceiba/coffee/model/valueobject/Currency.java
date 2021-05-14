@@ -1,6 +1,11 @@
 package com.ceiba.coffee.model.valueobject;
 
+import java.util.Objects;
+
 public class Currency {
+    public static final Currency USD = new Currency("USD");
+    public static final Currency COP = new Currency("COP");
+
     private String isoCode;
 
     public Currency(String isoCode) {
@@ -19,5 +24,18 @@ public class Currency {
         }
 
         this.isoCode = isoCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Currency currency = (Currency) o;
+        return isoCode.equals(currency.isoCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isoCode);
     }
 }

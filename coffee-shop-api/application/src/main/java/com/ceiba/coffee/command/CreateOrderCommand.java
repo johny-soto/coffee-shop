@@ -5,14 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterCoffeeCommand {
-
-    private String name;
-    private int category;
-    private int units;
-    private int price;
+public class CreateOrderCommand {
+    private List<Integer> coffees;
+    private String currency;
 }

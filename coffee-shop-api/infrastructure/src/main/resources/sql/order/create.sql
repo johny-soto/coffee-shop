@@ -1,0 +1,1 @@
+insert into `order` (`gross_price`, `discount`, `charges`, `total`, `date`) values (:orderGrossPrice, :discount, :charges, :total, :date)

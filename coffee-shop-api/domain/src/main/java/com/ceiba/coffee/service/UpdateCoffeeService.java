@@ -1,6 +1,5 @@
 package com.ceiba.coffee.service;
 
-import com.ceiba.coffee.exception.CoffeeNotFoundException;
 import com.ceiba.coffee.model.entity.Coffee;
 import com.ceiba.coffee.port.repository.CoffeeRepository;
 import com.ceiba.domain.exception.NoDataException;

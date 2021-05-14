@@ -13,3 +13,6 @@ CREATE TABLE coffee (
   PRIMARY KEY (id),
   FOREIGN KEY (category_id) REFERENCES category (id)
 );
+
+insert into category(id,description) values(1,'Clasico');
+insert into category(id,description) values(2,'Especialidad');

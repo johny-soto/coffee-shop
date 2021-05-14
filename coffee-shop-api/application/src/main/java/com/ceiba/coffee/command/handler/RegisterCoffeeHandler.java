@@ -10,12 +10,12 @@ import com.ceiba.coffee.command.RegisterCoffeeCommand;
 import com.ceiba.coffee.command.factory.CoffeeFactory;
 
 @Component
-public class RegisterCoffeeHandlerWithResponse implements CommandHandlerWithResponse<RegisterCoffeeCommand, CommandResponse<Integer>> {
+public class RegisterCoffeeHandler implements CommandHandlerWithResponse<RegisterCoffeeCommand, CommandResponse<Integer>> {
 
     private final CoffeeFactory coffeeFactory;
     private final RegisterCoffeeService registerCoffeeService;
 
-    public RegisterCoffeeHandlerWithResponse(CoffeeFactory coffeeFactory, RegisterCoffeeService registerCoffeeService) {
+    public RegisterCoffeeHandler(CoffeeFactory coffeeFactory, RegisterCoffeeService registerCoffeeService) {
         this.coffeeFactory = coffeeFactory;
         this.registerCoffeeService = registerCoffeeService;
     }
