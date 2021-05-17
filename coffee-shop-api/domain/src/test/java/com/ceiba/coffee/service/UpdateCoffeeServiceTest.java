@@ -1,14 +1,12 @@
 package com.ceiba.coffee.service;
 
-import com.ceiba.coffee.exception.CoffeeNotFoundException;
+import com.ceiba.BaseTest;
 import com.ceiba.coffee.model.entity.Coffee;
 import com.ceiba.coffee.port.repository.CoffeeRepository;
-import com.ceiba.coffee.service.testdatabuilder.CoffeeTestDataBuilder;
+import com.ceiba.coffee.testdatabuilder.CoffeeTestDataBuilder;
 import com.ceiba.domain.exception.NoDataException;
 import org.junit.Test;
 import org.mockito.Mockito;
-
-import com.ceiba.BaseTest;
 
 public class UpdateCoffeeServiceTest {
 

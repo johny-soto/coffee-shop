@@ -1,9 +1,14 @@
 package com.ceiba.setting;
 
 import com.ceiba.coffee.port.repository.CoffeeRepository;
-import com.ceiba.coffee.port.repository.CurrencyRateRepository;
-import com.ceiba.coffee.port.repository.OrderRepository;
-import com.ceiba.coffee.service.*;
+import com.ceiba.coffee.service.DeleteCoffeeService;
+import com.ceiba.coffee.service.RegisterCoffeeService;
+import com.ceiba.coffee.service.UpdateCoffeeService;
+import com.ceiba.order.port.repository.CurrencyRateRepository;
+import com.ceiba.order.port.repository.OrderRepository;
+import com.ceiba.order.service.CreateOrderService;
+import com.ceiba.order.service.CurrencyConverterService;
+import com.ceiba.order.service.PlaceOrderService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
