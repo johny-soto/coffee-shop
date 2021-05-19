@@ -12,7 +12,7 @@ import lombok.Setter;
 public class RegisterCoffeeCommand {
 
     private String name;
-    private int category;
+    private int categoryId;
     private int units;
     private int price;
 }

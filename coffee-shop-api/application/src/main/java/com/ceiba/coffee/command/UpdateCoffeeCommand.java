@@ -13,7 +13,7 @@ public class UpdateCoffeeCommand {
 
     private int id;
     private String name;
-    private int category;
+    private int categoryId;
     private int units;
-    private int value;
+    private int price;
 }

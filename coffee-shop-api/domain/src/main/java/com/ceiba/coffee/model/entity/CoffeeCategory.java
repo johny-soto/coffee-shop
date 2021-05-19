@@ -2,14 +2,14 @@ package com.ceiba.coffee.model.entity;
 
 public class CoffeeCategory {
     private int id;
-    private String descripion;
+    private String description;
 
     public final static CoffeeCategory classic = new CoffeeCategory(1,"Clasico");
     public final static CoffeeCategory speciality = new CoffeeCategory(2,"Especialidad");
 
-    private CoffeeCategory(int id, String descripion) {
+    private CoffeeCategory(int id, String description) {
         this.id = id;
-        this.descripion = descripion;
+        this.description = description;
     }
 
     public static CoffeeCategory fromId(int id){
@@ -24,5 +24,9 @@ public class CoffeeCategory {
 
     public int getId() {
         return id;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

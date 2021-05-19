@@ -1,5 +1,6 @@
 package com.ceiba.coffee.command.factory;
 
+import com.ceiba.coffee.command.RegisterCoffeeCommand;
 import com.ceiba.coffee.command.UpdateCoffeeCommand;
 import com.ceiba.coffee.model.dto.CoffeeDto;
 import com.ceiba.coffee.model.entity.Coffee;
@@ -7,15 +8,13 @@ import com.ceiba.coffee.model.entity.CoffeeCategory;
 import com.ceiba.coffee.model.valueobject.Money;
 import org.springframework.stereotype.Component;
 
-import com.ceiba.coffee.command.RegisterCoffeeCommand;
-
 @Component
 public class CoffeeFactory {
 
     public Coffee create(RegisterCoffeeCommand registerCoffeeCommand) {
         return new Coffee(
                 registerCoffeeCommand.getName(),
-                CoffeeCategory.fromId(registerCoffeeCommand.getCategory()),
+                CoffeeCategory.fromId(registerCoffeeCommand.getCategoryId()),
                 Money.createUSD(registerCoffeeCommand.getPrice()),
                 registerCoffeeCommand.getUnits()
         );
@@ -25,8 +24,8 @@ public class CoffeeFactory {
         return new Coffee(
                 updateCoffeeCommand.getId(),
                 updateCoffeeCommand.getName(),
-                CoffeeCategory.fromId(updateCoffeeCommand.getCategory()),
-                Money.createUSD(updateCoffeeCommand.getValue()),
+                CoffeeCategory.fromId(updateCoffeeCommand.getCategoryId()),
+                Money.createUSD(updateCoffeeCommand.getPrice()),
                 updateCoffeeCommand.getUnits()
         );
     }
