@@ -1,5 +1,7 @@
 package com.ceiba.coffee.model.valueobject;
 
+import com.ceiba.domain.exception.InvalidValueException;
+
 import java.util.Objects;
 
 public class Currency {
@@ -19,17 +21,20 @@ public class Currency {
     private void setIsoCode(String isoCode) {
         try {
             java.util.Currency.getInstance(isoCode);
-        }catch (Exception e ){
-            throw new IllegalArgumentException(e);
+        } catch (NullPointerException | IllegalArgumentException e) {
+            throw new InvalidValueException("Codigo ISO no valido");
         }
-
         this.isoCode = isoCode;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Currency currency = (Currency) o;
         return isoCode.equals(currency.isoCode);
     }
