@@ -5,7 +5,6 @@ import com.ceiba.coffee.model.entity.CoffeeCategory;
 import com.ceiba.coffee.model.valueobject.Currency;
 import com.ceiba.coffee.model.valueobject.Money;
 import com.ceiba.domain.exception.NoDataException;
-import lombok.Getter;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -14,7 +13,6 @@ import java.util.stream.Collectors;
 
 import static com.ceiba.coffee.model.valueobject.Currency.USD;
 
-@Getter
 public class Order {
     private int id;
     private List<Coffee> coffees;
@@ -89,11 +87,39 @@ public class Order {
         return additionalCharges;
     }
 
-    private Money calculateTotal(){
+    private Money calculateTotal() {
         Money total = orderGrossPrice;
         total = total.add(charges.getAmount());
         total = total.subtract(orderDiscount.getAmount());
         return total;
     }
 
+    public int getId() {
+        return id;
+    }
+
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public Money getOrderGrossPrice() {
+        return orderGrossPrice;
+    }
+
+    public Money getOrderDiscount() {
+        return orderDiscount;
+    }
+
+    public Money getCharges() {
+        return charges;
+    }
+
+    public Money getTotal() {
+        return total;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 }

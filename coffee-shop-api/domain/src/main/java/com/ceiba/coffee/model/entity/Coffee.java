@@ -3,10 +3,8 @@ package com.ceiba.coffee.model.entity;
 
 import com.ceiba.coffee.model.valueobject.Money;
 import com.ceiba.domain.ArgumentValidator;
-import lombok.Getter;
 
 
-@Getter
 public class Coffee {
 
     private int id;
@@ -43,5 +41,25 @@ public class Coffee {
         ArgumentValidator.validateRequired(name, "El nombre es requerido");
         ArgumentValidator.validateNotEmpty(name, "El nombre no puede estar vacio");
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public CoffeeCategory getCategory() {
+        return category;
+    }
+
+    public Money getPrice() {
+        return price;
+    }
+
+    public int getUnits() {
+        return units;
     }
 }

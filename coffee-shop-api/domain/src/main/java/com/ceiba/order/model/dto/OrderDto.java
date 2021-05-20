@@ -1,13 +1,9 @@
 package com.ceiba.order.model.dto;
 
 import com.ceiba.order.model.entity.Order;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 import java.util.Date;
 
-@Getter
-@AllArgsConstructor
 public class OrderDto {
     private Integer id;
     private Integer orderGrossPrice;
@@ -26,13 +22,30 @@ public class OrderDto {
                 order.getDate());
     }
 
-    public static OrderDto fromEntity(Order order, int orderId){
+    public static OrderDto fromEntity(Order order, int orderId) {
         return new OrderDto(
                 orderId,
-                (int)order.getOrderGrossPrice().getAmount(),
+                (int) order.getOrderGrossPrice().getAmount(),
                 order.getOrderDiscount().getAmount(),
                 order.getCharges().getAmount(),
                 order.getTotal().getAmount(),
                 order.getDate());
+    }
+
+    public OrderDto(Integer id, Integer orderGrossPrice, Double discount, Double charges, Double total, Date date) {
+        this.id = id;
+        this.orderGrossPrice = orderGrossPrice;
+        this.discount = discount;
+        this.charges = charges;
+        this.total = total;
+        this.date = date;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Double getTotal() {
+        return total;
     }
 }
