@@ -28,4 +28,11 @@ public class CoffeeTest {
         BaseTest.assertThrows(() -> new CoffeeTestDataBuilder().whitUnits(0).build(),
                 InvalidValueException.class, "Las unidades deben ser mayor a 0");
     }
+
+    @Test
+    public void validateCoffeeCategory() {
+        // act - assert
+        BaseTest.assertThrows(() -> new CoffeeTestDataBuilder().whitCategory(3).build(),
+                InvalidValueException.class, "Categoria no valida");
+    }
 }

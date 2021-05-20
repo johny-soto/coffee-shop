@@ -1,5 +1,7 @@
 package com.ceiba.coffee.model.entity;
 
+import com.ceiba.domain.exception.InvalidValueException;
+
 public class CoffeeCategory {
     private final int id;
     private final String description;
@@ -19,7 +21,7 @@ public class CoffeeCategory {
         if (id == 2) {
             return speciality;
         }
-        throw new IllegalArgumentException();
+        throw new InvalidValueException("Categoria no valida");
     }
 
     public int getId() {
