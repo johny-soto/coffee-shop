@@ -1,19 +1,19 @@
 package com.ceiba.coffee.model.entity;
 
 public class CoffeeCategory {
-    private int id;
-    private String description;
+    private final int id;
+    private final String description;
 
-    public final static CoffeeCategory classic = new CoffeeCategory(1,"Clasico");
-    public final static CoffeeCategory speciality = new CoffeeCategory(2,"Especialidad");
+    public static final CoffeeCategory classic = new CoffeeCategory(1, "Clasico");
+    public static final CoffeeCategory speciality = new CoffeeCategory(2, "Especialidad");
 
     private CoffeeCategory(int id, String description) {
         this.id = id;
         this.description = description;
     }
 
-    public static CoffeeCategory fromId(int id){
-        if (id == 1){
+    public static CoffeeCategory fromId(int id) {
+        if (id == 1) {
             return classic;
         }
         if (id == 2) {
