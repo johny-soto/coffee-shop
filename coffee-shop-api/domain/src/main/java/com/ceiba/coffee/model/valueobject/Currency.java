@@ -1,6 +1,7 @@
 package com.ceiba.coffee.model.valueobject;
 
 import com.ceiba.domain.exception.InvalidValueException;
+import com.ceiba.domain.exception.NoDataException;
 
 import java.util.Objects;
 
@@ -21,7 +22,9 @@ public class Currency {
     private void setIsoCode(String isoCode) {
         try {
             java.util.Currency.getInstance(isoCode);
-        } catch (NullPointerException | IllegalArgumentException e) {
+        } catch (NullPointerException e) {
+            throw new NoDataException("Debe proporcionar un codigo ISO");
+        } catch (IllegalArgumentException e) {
             throw new InvalidValueException("Codigo ISO no valido");
         }
         this.isoCode = isoCode;
