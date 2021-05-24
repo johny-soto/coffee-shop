@@ -45,7 +45,23 @@ public class OrderDto {
         return id;
     }
 
+    public Integer getOrderGrossPrice() {
+        return orderGrossPrice;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public Double getCharges() {
+        return charges;
+    }
+
     public Double getTotal() {
         return total;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }
